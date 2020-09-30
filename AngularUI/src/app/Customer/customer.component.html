@@ -1,0 +1,51 @@
+<div class="navbar navbar-inverse navbar-fixed-top"
+     style="border-style:solid; border-width:thick; padding:0px; border-color:lightcyan;
+            background-attachment:fixed;background-color:lightcyan; height:180px">
+  <div class="col"></div>
+  <div class="col"> <h2 style="text-align:center;color:black">CUSTOMER DETAILS</h2></div>
+  <div class="col"></div>
+
+</div>
+
+<div class="row" style="height:100px"></div>
+  <div class="row">
+    <div class="example-container mat-elevation-z8 col-xs-12 col-sm-6 col-md-8" style="margin-left:250px">
+      <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="firstname">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="lastname">
+          <mat-header-cell *matHeaderCellDef>LastName</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dateofbirth">
+          <mat-header-cell *matHeaderCellDef >DateOfBirth</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.dateOfBirth|date: 'dd/MM/yyyy'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="premiumEdited">
+          <mat-header-cell *matHeaderCellDef >IsPremiumCustomer</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.premiumEdited}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="addressEdited">
+          <mat-header-cell *matHeaderCellDef >Address</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.addressEdited}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></mat-header-row>
+        <mat-row mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+
+  <div class="row" style="margin-left:250px">
+    <mat-paginator #TablePaginator="matPaginator" [pageSizeOptions]="[40]" style="margin-left:10px" showFirstLastButtons></mat-paginator>
+  </div>
+
+
+
+
